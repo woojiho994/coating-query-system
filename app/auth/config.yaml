@@ -1,0 +1,31 @@
+cookie:
+  expiry_days: 30
+  key: chemical_toxicity_cookie
+  name: chemical_toxicity_app
+credentials:
+  usernames:
+    Gin:
+      email: liwei@scies.org
+      name: 李潍
+      password: $2b$12$/vTCZYkA8HmuOsX1BxUkoO.RxI2hA5cOydbKdKTKcheSNpUt9U33y
+      plain_password: '123456'
+    admin:
+      email: admin@example.com
+      name: 管理员
+      password: $2b$12$oKisNkoEHATkFeMQPCemzeqihUo9MrhpcMaVgWCPbC4.JdeQksam6
+      plain_password: admin123
+    tukeng:
+      email: 44555@qq.com
+      name: 涂铿
+      password: $2b$12$Igf5BTXCNKgwYhoeSM1c1.jRHbH0U.vJ8RltVsqdjxCwyRNYT1ALG
+      plain_password: '123456'
+    user:
+      email: user@example.com
+      name: 普通用户
+      password: $2b$12$WVPc20zJChbVakwqRpjdbujXjtwAP6IrBbsI7rd2732zHezJPBR2m
+      plain_password: user123
+    wuzihao:
+      email: 2535326734@qq.com
+      name: 武子豪
+      password: $2b$12$3/gboui/UchgHnzOzi9WoectX6AC.V0yEREE0lsUiCzFGxPAixPtW
+      plain_password: '123456'
