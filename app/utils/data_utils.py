@@ -38,21 +38,15 @@ def search_chemical_by_cas(cas_number, df):
     # 打印前5个CAS号，进行检查
     print(f"数据框中前5个CAS号: {df[cas_col].head(5).tolist()}")
     
-    # 找到匹配的行（尝试精确匹配和包含匹配）
+    # 只进行精确匹配
     exact_match = df[df[cas_col] == cas_number]
     
     if len(exact_match) > 0:
         print(f"找到精确匹配结果: {len(exact_match)}行")
         return exact_match.iloc[0].to_dict()
     else:
-        # 尝试部分匹配
-        partial_match = df[df[cas_col].str.contains(cas_number, regex=False)]
-        if len(partial_match) > 0:
-            print(f"找到部分匹配结果: {len(partial_match)}行")
-            return partial_match.iloc[0].to_dict()
-        else:
-            print(f"未找到匹配CAS号: {cas_number}")
-            return None
+        print(f"未找到匹配CAS号: {cas_number}")
+        return None
 
 # 获取毒性级别的说明
 def get_toxicity_level_description(level):
