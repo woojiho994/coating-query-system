@@ -89,7 +89,7 @@ def search_page(username):
                 st.warning("请输入使用用途。")
     
     # 显示查询结果（从session state读取）
-    if st.session_state.search_performed and st.session_state.search_result is not None:
+    if st.session_state.search_performed:
         result = st.session_state.search_result
         cas_number = st.session_state.last_search_cas
         usage_purpose = st.session_state.last_search_usage
@@ -169,20 +169,46 @@ def search_page(username):
             
         else:
             # 显示未找到结果的信息
-            st.warning(f"❌ 未找到CAS号为 `{cas_number}` 的化学物质。")
+            st.error(f"❌ 查询结果：未找到CAS号为 `{cas_number}` 的化学物质")
             
-            # 显示联系信息的提示框
-            st.info("""
-            📧 **数据库暂无该物质结果**
+            # 创建两列布局显示查询信息和建议
+            col1, col2 = st.columns([1, 1])
             
-            如需获取该物质评估结果，请发送邮件至 **liwei@scies.org** 邮箱
+            with col1:
+                st.subheader("🔍 查询信息")
+                st.markdown(f"**查询的CAS号**: `{cas_number}`")
+                st.markdown(f"**使用用途**: {usage_purpose}")
+                st.markdown(f"**查询时间**: {pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S')}")
+                
+                st.warning("""
+                **可能的原因：**
+                - CAS号输入错误或格式不正确
+                - 该化学物质不在当前数据库中
+                - 该物质尚未进行绿色分级评估
+                """)
             
-            邮件中请注明：
-            - 化学物质名称
-            - CAS号
-            - 用途
-            - 企业名称
-            """)
+            with col2:
+                st.subheader("📧 获取评估结果")
+                st.info("""
+                **数据库暂无该物质结果**
+                
+                如需获取该物质评估结果，请发送邮件至：
+                
+                **📬 liwei@scies.org**
+                
+                **邮件中请注明：**
+                - 化学物质名称
+                - CAS号：`{}`
+                - 使用用途：{}
+                - 企业名称
+                """.format(cas_number, usage_purpose))
+                
+                st.success("""
+                **✅ 我们将为您：**
+                - 进行专业的绿色分级评估
+                - 提供详细的风险分析报告
+                - 推荐合适的替代方案
+                """)
     
     # 显示一些使用说明
     with st.expander("📖 使用帮助"):

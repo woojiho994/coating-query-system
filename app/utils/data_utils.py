@@ -36,7 +36,7 @@ def search_chemical_by_cas(cas_number, df):
     df[cas_col] = df[cas_col].astype(str).str.strip()
     
     # 打印前5个CAS号，进行检查
-    print(f"数据框中前5个CAS号: {df[cas_col].head(5).tolist()}")
+    # print(f"数据框中前5个CAS号: {df[cas_col].head(5).tolist()}")
     
     # 只进行精确匹配
     exact_match = df[df[cas_col] == cas_number]
